@@ -28,15 +28,15 @@ app.use(cors(corsOptions))
 app.use('/uploads', express.static('uploads'));
 
 //api routes
-app.use("/.netlify/functions/api/",userrouter)  // login and register route
-app.use("/.netlify/functions/api/story",storyrouter) //story route
-app.use("/.netlify/functions/api/learn",learnrouter)  //learning card route
-app.use("/.netlify/functions/api/contactus",contactUsRouter)//contactus 
-app.use("/.netlify/functions/api/newsletter",newsletter)
-app.use("/.netlify/functions/api/latest",latestrouter)
-app.use("/.netlify/functions/api/ipo",iporouter)
-app.use("/.netlify/functions/api/token",validityrouter)
-app.use("/.netlify/functions/api/marque",marquerouter)
+app.use("/api/",userrouter)  // login and register route
+app.use("/api/story",storyrouter) //story route
+app.use("/api/learn",learnrouter)  //learning card route
+app.use("/api/contactus",contactUsRouter)//contactus 
+app.use("/api/newsletter",newsletter)
+app.use("/api/latest",latestrouter)
+app.use("/api/ipo",iporouter)
+app.use("/api/token",validityrouter)
+app.use("/api/marque",marquerouter)
 try{
     app.listen(process.env.APP_PORT,()=>{
         console.log(`server started on ${process.env.APP_PORT}.visit http://localhost:${process.env.APP_PORT}`)

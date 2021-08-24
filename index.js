@@ -1,18 +1,17 @@
 const express= require("express")
 const helmet=require("helmet")
 const dotenv =require("dotenv")
-const userrouter=require("./api/users/routes")
-const storyrouter=require("./api/pages/story/routers")
-const learnrouter=require("./api/pages/learn/routers")
-const contactUsRouter=require("./api/contactus/routes")
-const newsletter=require("./api/newsletter/routes")
-const latestrouter=require("./api/latestcard/routes")
-const iporouter=require("./api/ipo/routes")
+const userrouter=require("../api/users/routes")
+const storyrouter=require("../api/pages/story/routers")
+const learnrouter=require("../api/pages/learn/routers")
+const contactUsRouter=require("../api/contactus/routes")
+const newsletter=require("../api/newsletter/routes")
+const latestrouter=require("../api/latestcard/routes")
+const iporouter=require("../api/ipo/routes")
 const bodyParser = require("body-parser")
 const cors=require('cors')
-const validityrouter=require("./api/token/validity")
-const marquerouter=require("./api/marque/routes")
-const serverless =require('serverless-http')
+const validityrouter=require("../api/token/validity")
+const marquerouter=require("../api/marque/routes")
 
 dotenv.config()
 var corsOptions={
@@ -38,11 +37,10 @@ app.use("/api/ipo",iporouter)
 app.use("/api/token",validityrouter)
 app.use("/api/marque",marquerouter)
 try{
-    app.listen(process.env.APP_PORT,()=>{
+    app.listen(process.env.APP_PORT || 3000,()=>{
         console.log(`server started on ${process.env.APP_PORT}.visit http://localhost:${process.env.APP_PORT}`)
     })
 }catch(err){
     console.log("error while creating server")
 
 }
-module.exports.handler=serverless(app)
